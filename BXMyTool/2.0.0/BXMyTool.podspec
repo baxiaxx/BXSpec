@@ -123,6 +123,20 @@ Pod::Spec.new do |s|
   # s.library   = "iconv"
   # s.libraries = "iconv", "xml2"
 
+  if ENV['IS_SOURCE']
+    puts '-------------------------------------------------------------------'
+    puts 'Notice:BXMyTool is source now'
+    puts '-------------------------------------------------------------------'
+    s.source_files = 'BXMyTool/BXTest/**/*'
+  else
+    puts '-------------------------------------------------------------------'
+    puts 'Notice:BXMyTool is binary now'
+    puts '-------------------------------------------------------------------'
+    s.source_files = 'Pod/Products/include/**'
+    s.public_header_files = 'Pod/Products/include/*.h'
+    s.ios.vendored_libraries = 'Pod/Products/lib/libBXMyTool.a'
+  end
+
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
